@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Renovation by Wolf Carpenters | Transform Your Dream Kitchen</title>
+    <meta name="description" content="Expert kitchen renovation services. From concept to completion, we build custom kitchens with precision and passion. Get your free estimate today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #E1BA47;
+            --secondary-color: #010101;
+            --support-color: #F5F6F7;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(1, 1, 1, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-cta {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - ATTENTION */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 1, 1, 0.85) 0%, rgba(1, 1, 1, 0.6) 100%);
+            z-index: -1;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 900px;
+            padding: 0 20px;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+        }
+
+        .hero-content .highlight {
+            color: var(--primary-color);
+        }
+
+        .typewriter {
+            color: var(--primary-color);
+            border-right: 3px solid var(--primary-color);
+            padding-right: 5px;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-color); }
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        .badge-icon {
+            font-size: 1.1rem;
+        }
+
+        .badge-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Open Sans', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(225, 186, 71, 0.3);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(225, 186, 71, 0.4);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Before & After Section - INTEREST */
+        .before-after-section {
+            background: var(--support-color);
+        }
+
+        .comparison-container {
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+
+        .image-slider-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            cursor: ew-resize;
+            user-select: none;
+        }
+
+        .image-slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .img-before {
+            z-index: 2;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+
+        .img-after {
+            z-index: 1;
+        }
+
+        .slider-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: 3;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(225, 186, 71, 0.5);
+            pointer-events: none;
+        }
+
+        .slider-button::before {
+            content: '⟨';
+            position: absolute;
+            left: 15px;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .slider-button::after {
+            content: '⟩';
+            position: absolute;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .comparison-label {
+            position: absolute;
+            top: 20px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 10px 20px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 5px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .label-before {
+            left: 20px;
+        }
+
+        .label-after {
+            right: 20px;
+        }
+
+        /* Portfolio Section - INTEREST */
+        .portfolio-section {
+            background: var(--white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Features Section - DESIRE */
+        .features-section {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .features-section .section-title {
+            color: var(--white);
+        }
+
+        .features-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Team Section - DESIRE */
+        .team-section {
+            background: var(--support-color);
+        }
+
+        .team-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .team-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .team-image-main {
+            grid-column: 1 / -1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-image-main img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .team-image-small {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-image-small:hover {
+            transform: scale(1.05);
+        }
+
+        .team-image-small img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .team-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--secondary-color);
+        }
+
+        .team-text .family-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .team-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .team-text p strong {
+            color: var(--secondary-color);
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: var(--white);
+            padding: 100px 0;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .reviews-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .google-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .rating-score {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .rating-details {
+            text-align: left;
+        }
+
+        .stars {
+            color: #FBBC04;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .rating-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        .google-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--support-color);
+            border-radius: 5px;
+        }
+
+        .google-logo img {
+            height: 20px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .review-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+            flex-shrink: 0;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .reviewer-badge {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .review-stars {
+            color: #FBBC04;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .review-text {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .review-badge-bottom {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .google-reviews-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .google-link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            background: var(--white);
+            border: 2px solid #4285F4;
+            border-radius: 5px;
+            color: #4285F4;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .google-link-button:hover {
+            background: #4285F4;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Form Section - ACTION */
+        .form-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 100px 0;
+        }
+
+        .form-section .section-title {
+            color: var(--white);
+        }
+
+        .form-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .radio-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .privacy-notice {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .privacy-notice a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .privacy-notice a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 18px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(225, 186, 71, 0.3);
+        }
+
+        /* Floating Widget */
+        .floating-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .widget-button {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .widget-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(225, 186, 71, 0.5);
+        }
+
+        .widget-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .widget-tooltip {
+            position: absolute;
+            right: 85px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .widget-tooltip.show {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.05); }
+        }
+
+        .widget-tooltip::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid var(--secondary-color);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .portfolio-grid,
+            .features-grid,
+            .team-content,
+            .team-images {
+                grid-template-columns: 1fr;
+            }
+
+            .team-image-main img {
+                height: 300px;
+            }
+
+            .image-slider-container {
+                height: 400px;
+            }
+
+            .team-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .floating-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .widget-tooltip {
+                display: none;
+            }
+        }
+
+            @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .nav-cta {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="0 - Brand Logo/logo-wolf-desktop (1).png" alt="Wolf Carpenters Logo">
+            </div>
+            <a href="#contact-form" class="nav-cta">Get Free Estimate</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section - ATTENTION -->
+    <section class="hero-section" id="home">
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <source src="1 - Hero Section - First Impression/hero-kitchen-showcase-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Premium Kitchen <span class="typewriter" id="typewriter">Renovation</span><br>Built With Precision & Passion</h1>
+            <p>Trusted by 500+ homeowners in the area. We don't just remodel kitchens—we create luxury spaces where families gather, memories are made, and home value increases by up to 70%.</p>
+            
+            <a href="#contact-form" class="cta-button">Get My Free Kitchen Estimate</a>
+            
+            <div class="hero-badges">
+                <div class="badge">
+                    <span class="badge-icon">⭐</span>
+                    <span class="badge-text">25+ Years Experience</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span class="badge-text">500+ Kitchens Transformed</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-text">100% Satisfaction Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section - INTEREST -->
+    <section class="before-after-section" id="transformations">
+        <div class="container">
+            <h2 class="section-title">See The <span style="color: var(--primary-color);">Transformation</span></h2>
+            <p class="section-subtitle">Drag the slider to see the incredible before and after. This could be your kitchen next.</p>
+            
+            <div class="comparison-container fade-in">
+                <div class="image-slider-container" id="imageSlider">
+                    <img src="2 - Before and After Transformation/before-old-kitchen.jpg" alt="Kitchen Before Renovation" class="img-after">
+                    <img src="2 - Before and After Transformation/after-complete-kitchen-renovation.jpg" alt="Kitchen After Renovation" class="img-before" id="imgBefore">
+                    <div class="slider-line" id="sliderLine"></div>
+                    <div class="slider-button" id="sliderButton"></div>
+                    <span class="comparison-label label-before">BEFORE</span>
+                    <span class="comparison-label label-after">AFTER</span>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#contact-form" class="cta-button">Start My Kitchen Renovation Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section - INTEREST -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our <span style="color: var(--primary-color);">Custom Kitchen</span> Portfolio</h2>
+            <p class="section-subtitle">Every project is a testament to our commitment to excellence. Explore kitchens we've built for homeowners just like you.</p>
+            
+            <div class="portfolio-grid fade-in">
+                <div class="portfolio-item">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-1.jpg" alt="Modern Blue and White Kitchen">
+                </div>
+                <div class="portfolio-item">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-overview-island.jpg" alt="Kitchen with Island Overview">
+                </div>
+                <div class="portfolio-item">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-and-window.jpg" alt="Kitchen Sink with Window View">
+                </div>
+                <div class="portfolio-item">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-1.jpg" alt="Custom Black Kitchen Design">
+                </div>
+                <div class="portfolio-item">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-2.jpg" alt="Elegant Black Kitchen Cabinets">
+                </div>
+                <div class="portfolio-item">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-wide.jpg" alt="Wide View Custom Kitchen">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#contact-form" class="cta-button">Transform My Kitchen Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section - DESIRE -->
+    <section class="features-section" id="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span style="color: var(--primary-color);">Wolf Carpenters</span>?</h2>
+            <p class="section-subtitle">We don't just build kitchens—we create the heart of your home with exceptional quality and care.</p>
+            
+            <div class="features-grid fade-in">
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Design</h3>
+                    <p>Every kitchen is uniquely designed to match your lifestyle, preferences, and space requirements.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚒️</div>
+                    <h3>Expert Craftsmanship</h3>
+                    <p>Our skilled carpenters bring decades of experience to ensure flawless execution and lasting quality.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>On-Time Delivery</h3>
+                    <p>We respect your time and home. Projects are completed on schedule without compromising quality.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <h3>Premium Materials</h3>
+                    <p>Only the finest materials make it into your kitchen. Quality you can see and feel.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✅</div>
+                    <h3>Complete Service</h3>
+                    <p>From initial design to final cleanup, we handle every detail of your kitchen transformation.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Guaranteed Satisfaction</h3>
+                    <p>Your happiness is our priority. We stand behind our work with comprehensive warranties.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#contact-form" class="cta-button">Get My Free Kitchen Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section - DESIRE -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="team-content fade-in">
+                <div class="team-images">
+                    <div class="team-image-main">
+                        <img src="6 - Meet the Team - Wolf Carpenters/team-full-group.jpg" alt="Wolf Carpenters Full Team">
+                    </div>
+                    <div class="team-image-small">
+                        <img src="6 - Meet the Team - Wolf Carpenters/team-leaders-closeup.jpg" alt="Wolf Carpenters Leaders">
+                    </div>
+                    <div class="team-image-small">
+                        <img src="6 - Meet the Team - Wolf Carpenters/team-project-meeting.jpg" alt="Team Planning Meeting">
+                    </div>
+                </div>
+                <div class="team-text">
+                    <span class="family-badge">🏡 Family-Owned Since 2000</span>
+                    <h2>Meet The <span style="color: var(--primary-color);">Wolf Family</span> Behind Your Dream Kitchen</h2>
+                    <p><strong>We're not just contractors—we're a family business.</strong> For over 25 years, the Wolf family has been dedicated to transforming kitchens with the same care and attention we'd give our own homes.</p>
+                    <p>What started as a father-and-son carpentry shop has grown into a full team of passionate craftsmen, many of whom have been with us for decades. We treat every project like it's for family—because to us, our clients become part of the Wolf family.</p>
+                    <p><strong>When you choose Wolf Carpenters, you're choosing generations of expertise, traditional craftsmanship values, and a personal commitment to excellence.</strong></p>
+                    <p style="color: var(--primary-color); font-weight: 600; font-size: 1.15rem;">The heart of your home deserves to be built by people who care—not just a crew, but a family.</p>
+                    
+                    <div class="team-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Families Served</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Years Family Business</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Customer Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#contact-form" class="cta-button">Start My Kitchen Renovation Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section - DESIRE/PROOF -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>One of <span style="color: var(--primary-color);">Massachusetts'</span> Top-Rated Contractors</h2>
+                <p class="section-subtitle">Don't just take our word for it—see what our clients have to say</p>
+                
+                <div class="google-rating">
+                    <div class="rating-score">4.9</div>
+                    <div class="rating-details">
+                        <div class="stars">★★★★★</div>
+                        <div class="rating-text">Based on 150+ Google Reviews</div>
+                        <div class="google-logo">
+                            <span style="font-weight: 600; color: #5F6368;">Google</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-grid fade-in">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">MS</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Melissa Stockbridge</div>
+                            <div class="reviewer-badge">Local Guide · 69 reviews</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        Julio and the entire team at Wolf were professional and a pleasure to work with. I hired them to replace a bow window with a slider to my deck and close up the door next to it. They spent two days and protected the rest of my kitchen from dust and debris.
+                    </div>
+                    <span class="review-badge-bottom">Reasonable Price</span>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">JV</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Jeanne Vural</div>
+                            <div class="reviewer-badge">3 reviews · 1 photo</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">1 week ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        Wolf Carpenters Services has an exceptional team of professionals who take pride in their work. The tile and carpentry work exceeded my expectations. Julio and his team are dedicated to getting it right.
+                    </div>
+                    <span class="review-badge-bottom">Reasonable Price</span>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">SM</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Stephanya Martel</div>
+                            <div class="reviewer-badge">1 review · 2 photos</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">1 week ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        Had such a wonderful experience with these guys!! Very on point... was always there checking on things, asking questions, adding feedback, always available when we had questions. Not only did they do an amazing job painting, they removed wallpaper and redid my kitchen cabinets.
+                    </div>
+                    <span class="review-badge-bottom">Great Price</span>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">RT</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Robert Tringali</div>
+                            <div class="reviewer-badge">2 reviews</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">3 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        Wolf Carpenters work is absolutely flawless. These guys are top tier professionals and it was a pleasure to have them complete our project. I would 100% recommend, truly honest hard working people.
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">LT</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Lilian Taylor</div>
+                            <div class="reviewer-badge">1 review · 1 photo</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">2 months ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        Wolf Construction recently completed a deck and some remodeling work on my home, including custom built-ins, and I couldn't be happier with the results. The craftsmanship was excellent, and the attention to detail really stood out.
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">JM</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">James Morris</div>
+                            <div class="reviewer-badge">1 review</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        We recently had Wolf Carpenters complete a backyard make over at our house including all new patio, walkways, and walls, and a new deck with an outdoor kitchen and we are absolutely thrilled with the results!! Everything looks beautiful!
+                    </div>
+                </div>
+
+                <!-- Review 7 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">DW</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Danny Wolff</div>
+                            <div class="reviewer-badge">1 review</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">1 week ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        I've been battling squirrels for a few years in my attic. Julio was great to work with. Responsive, well priced, and treated the job with care going beyond my expectations on the repair. I'd highly recommend.
+                    </div>
+                </div>
+
+                <!-- Review 8 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">BH</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Brian Harrison</div>
+                            <div class="reviewer-badge">7 reviews · 8 photos</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">11 months ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        I can't say enough about how good the finished product is. A car hit our house, so we needed repairs to our siding. We also had broken stairs in the front and back of our house, so decided to have them all redone at the same time. Wolf did an exceptional job.
+                    </div>
+                </div>
+
+                <!-- Review 9 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">MK</div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Mohamed Karim</div>
+                            <div class="reviewer-badge">3 reviews · 4 photos</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">1 year ago</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        I recently had Wolf Carpentry transform the space under my deck into a beautiful, enclosed room, and I couldn't be happier with the results. From start to finish, the team was professional, efficient, and attentive to detail.
+                    </div>
+                </div>
+            </div>
+
+            <div class="google-reviews-link">
+                <a href="https://www.google.com/maps/search/wolf+carpenters" target="_blank" class="google-link-button">
+                    <span>Read All 150+ Reviews on Google</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact-form" class="cta-button">Get My Free Kitchen Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section - ACTION -->
+    <section class="form-section" id="contact-form">
+        <div class="container">
+            <h2 class="section-title">Get Your Free Kitchen Estimate</h2>
+            <p class="section-subtitle">Ready to transform your kitchen? Fill out the form below and we'll contact you within 24 hours with a personalized quote.</p>
+            
+            <div class="form-container fade-in">
+                <form id="kitchenForm" action="thank-you.html" method="GET">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label>What's the main goal for your kitchen renovation? *</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="full-remodel" name="renovation-goal" value="full-remodel" required>
+                                <label for="full-remodel">Full remodel – new layout, cabinets, and finishes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="partial-upgrade" name="renovation-goal" value="partial-upgrade">
+                                <label for="partial-upgrade">Partial upgrade – countertops, backsplash, or flooring</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="not-sure" name="renovation-goal" value="not-sure">
+                                <label for="not-sure">Not sure yet – I'd like some guidance</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Tell us about your project (optional)</label>
+                        <textarea id="message" name="message" placeholder="Share your vision, budget, timeline, or any specific requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Get My Free Estimate Now</button>
+
+                    <div class="privacy-notice">
+                        By submitting this form, you agree to our <a href="#privacy">Privacy Policy</a> and <a href="#terms">Terms of Service</a>. We respect your privacy and will never share your information with third parties. You may receive updates about your project via email or phone.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Wolf Carpenters. All rights reserved. | Kitchen Renovation Experts</p>
+        </div>
+    </footer>
+
+    <!-- Floating Widget -->
+    <div class="floating-widget">
+        <span class="widget-tooltip" id="widgetTooltip">CALL US NOW</span>
+        <a href="#contact-form" class="widget-button" aria-label="Contact Us">
+            <span class="widget-icon">📞</span>
+        </a>
+    </div>
+
+    <script>
+        // Typewriter Effect
+        const words = ['Renovation', 'Remodeling'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function typeWriter() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                // Pause at end of word
+                setTimeout(() => { isDeleting = true; }, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Start typewriter effect after page loads
+        setTimeout(typeWriter, 1000);
+
+        // Before and After Image Slider
+        const slider = document.getElementById('imageSlider');
+        const imgBefore = document.getElementById('imgBefore');
+        const sliderLine = document.getElementById('sliderLine');
+        const sliderButton = document.getElementById('sliderButton');
+        let isSliding = false;
+
+        function updateSlider(e) {
+            if (!isSliding && e.type !== 'mousemove' && e.type !== 'touchmove') return;
+            
+            const rect = slider.getBoundingClientRect();
+            let x;
+            
+            if (e.type.startsWith('touch')) {
+                x = e.touches[0].clientX - rect.left;
+            } else {
+                x = e.clientX - rect.left;
+            }
+            
+            // Limit slider between 0 and container width
+            x = Math.max(0, Math.min(x, rect.width));
+            
+            const percentage = (x / rect.width) * 100;
+            
+            imgBefore.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+            sliderLine.style.left = `${percentage}%`;
+            sliderButton.style.left = `${percentage}%`;
+        }
+
+        // Mouse events
+        slider.addEventListener('mousedown', () => { isSliding = true; });
+        document.addEventListener('mouseup', () => { isSliding = false; });
+        slider.addEventListener('mousemove', updateSlider);
+
+        // Touch events for mobile
+        slider.addEventListener('touchstart', () => { isSliding = true; });
+        document.addEventListener('touchend', () => { isSliding = false; });
+        slider.addEventListener('touchmove', updateSlider);
+
+        // Show tooltip after 10 seconds
+        setTimeout(() => {
+            const tooltip = document.getElementById('widgetTooltip');
+            tooltip.classList.add('show');
+        }, 10000);
+
+        // Form validation and enhancement
+        document.getElementById('kitchenForm').addEventListener('submit', function(e) {
+            // Let the form submit naturally to thank-you.html
+            // Additional tracking or validation can be added here
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(1, 1, 1, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(1, 1, 1, 0.95)';
+            }
+        });
+    </script>
+
+</body>
+</html>

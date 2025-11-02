@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Wolf Carpenters Kitchen Renovation</title>
+    <meta name="description" content="Thank you for your interest in our kitchen renovation services. We'll be in touch soon!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #E1BA47;
+            --secondary-color: #010101;
+            --support-color: #F5F6F7;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .thank-you-container {
+            max-width: 800px;
+            margin: 40px 20px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thank-you-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #d4a935 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: scaleIn 0.5s ease-out 0.3s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-icon::after {
+            content: '✓';
+            font-size: 4rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .thank-you-header h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .thank-you-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            opacity: 0.9;
+        }
+
+        .thank-you-content {
+            padding: 50px 40px;
+        }
+
+        .info-box {
+            background: var(--support-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .info-box h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .info-box ul li {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--support-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(225, 186, 71, 0.3);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(225, 186, 71, 0.4);
+        }
+
+        .social-proof {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1a1a 100%);
+            padding: 40px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .social-proof h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .logo-section {
+            text-align: center;
+            padding: 30px;
+            background: var(--white);
+        }
+
+        .logo-section img {
+            height: 80px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-header {
+                padding: 40px 30px;
+            }
+
+            .thank-you-header h1 {
+                font-size: 2rem;
+            }
+
+            .thank-you-content {
+                padding: 30px 25px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .social-proof {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            position: absolute;
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="thank-you-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="0 - Brand Logo/logo-wolf-desktop (1).png" alt="Wolf Carpenters Logo">
+        </div>
+
+        <!-- Header -->
+        <div class="thank-you-header">
+            <div class="success-icon"></div>
+            <h1>Thank You! 🎉</h1>
+            <p>Your request has been successfully submitted</p>
+        </div>
+
+        <!-- Content -->
+        <div class="thank-you-content">
+            <div class="info-box">
+                <h2>What Happens Next?</h2>
+                <p><strong>We're excited to help you create your dream kitchen!</strong> Here's what you can expect:</p>
+                <ul>
+                    <li>✅ <strong>Within 24 hours:</strong> A member of our team will contact you to discuss your project</li>
+                    <li>✅ <strong>Free Consultation:</strong> We'll schedule a convenient time to visit your home and understand your vision</li>
+                    <li>✅ <strong>Custom Proposal:</strong> You'll receive a detailed quote with design concepts and timeline</li>
+                    <li>✅ <strong>Expert Guidance:</strong> We'll answer all your questions and help you make informed decisions</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h2>📧 Check Your Email</h2>
+                <p>We've sent a confirmation email to the address you provided. If you don't see it in a few minutes, please check your spam folder.</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us Directly</h3>
+                    <p>Have urgent questions?</p>
+                    <a href="tel:+15551234567">(555) 123-4567</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email Us</h3>
+                    <p>Prefer to write?</p>
+                    <a href="mailto:info@wolfcarpenters.com">info@wolfcarpenters.com</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="index.html" class="cta-button">Return to Homepage</a>
+            </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="social-proof">
+            <h3>Join Hundreds of Happy Homeowners</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Kitchens Built</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#E1BA47', '#010101', '#F5F6F7'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 50);
+            }
+        }
+
+        // Trigger confetti on page load
+        window.addEventListener('load', createConfetti);
+    </script>
+
+</body>
+</html>
