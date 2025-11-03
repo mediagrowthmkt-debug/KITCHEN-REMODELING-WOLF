@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
     <title>Kitchen Renovation by Wolf Carpenters | Transform Your Dream Kitchen</title>
     <meta name="description" content="Expert kitchen renovation services. From concept to completion, we build custom kitchens with precision and passion. Get your free estimate today!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -819,7 +820,8 @@
                 <div class="feature-item">
                     <div class="feature-icon">💎</div>
                     <h3>Premium Materials</h3>
-                    <p>Only the finest materials make it into your kitchen. Quality you can see and feel.</p>
+                    <p>Only the finest materials make it into your kitchen. Quality you can see and feel.
+                    </p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">✅</div>
@@ -968,7 +970,6 @@
             function toObject(formData) {
                 const obj = {};
                 formData.forEach((value, key) => {
-                    // If multiple same-name fields exist, aggregate as array
                     if (obj[key] !== undefined) {
                         if (Array.isArray(obj[key])) obj[key].push(value);
                         else obj[key] = [obj[key], value];
@@ -980,18 +981,16 @@
             }
 
             function sendToWebhook(payload) {
-                // Try standard fetch first
                 return fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload),
                     keepalive: true
                 }).catch(() => {
-                    // Fallback with sendBeacon (fire-and-forget)
                     try {
                         const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
                         navigator.sendBeacon(WEBHOOK_URL, blob);
-                    } catch (_) { /* noop */ }
+                    } catch (_) {}
                 });
             }
 
@@ -1013,14 +1012,12 @@
                     submitted_at: new Date().toISOString()
                 };
 
-                // Fire webhook and then redirect preserving original GET behavior
                 Promise.resolve(sendToWebhook(payload)).finally(() => {
                     const params = new URLSearchParams();
                     Object.entries(data).forEach(([k, v]) => {
                         if (Array.isArray(v)) v.forEach(val => params.append(k, String(val)));
                         else if (v !== undefined && v !== null) params.append(k, String(v));
                     });
-                    // add campaign and url to thank-you as well (useful for debugging)
                     params.set('campaign', String(payload.campaign));
                     params.set('landing_url', String(payload.landing_url));
 
@@ -1028,7 +1025,6 @@
                 });
             }
 
-            // Attach to all forms on the page
             document.querySelectorAll('form').forEach(form => {
                 form.addEventListener('submit', handleSubmit);
             });
