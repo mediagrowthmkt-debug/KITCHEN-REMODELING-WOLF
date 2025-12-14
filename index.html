@@ -43,7 +43,7 @@
             top: 0;
             width: 100%;
             background: rgba(1, 1, 1, 0.95);
-            padding: 15px 0;
+            padding: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -52,15 +52,22 @@
         .navbar .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 5px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .logo {
+            position: relative;
+            z-index: 1001;
+            margin: -10px 0 -30px 0;
+        }
+
         .logo img {
-            height: 60px;
+            height: 143px;
             width: auto;
+            display: block;
         }
 
         .nav-cta {
@@ -73,6 +80,8 @@
             font-family: 'Montserrat', sans-serif;
             transition: all 0.3s ease;
             border: 2px solid var(--primary-color);
+            position: relative;
+            top: 0;
         }
 
         .nav-cta:hover {
@@ -92,14 +101,43 @@
             overflow: hidden;
         }
 
-        .hero-video-bg {
+        .hero-slideshow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             z-index: -2;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: heroZoom 5s ease-in-out forwards;
+        }
+
+        @keyframes heroZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
 
         .hero-overlay {
@@ -119,11 +157,19 @@
         }
 
         .hero-content {
-            text-align: center;
             color: var(--white);
-            max-width: 900px;
+            max-width: 1200px;
             padding: 0 20px;
             animation: slideUp 1s ease-out;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 400px;
         }
 
         @keyframes slideUp {
@@ -137,22 +183,126 @@
             }
         }
 
-        .hero-content h1 {
+        .hero-text h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             line-height: 1.1;
         }
 
-        .hero-content .highlight {
+        .hero-text .highlight {
             color: var(--primary-color);
         }
 
-        .hero-content p {
+        .hero-text p {
             font-size: 1.3rem;
             margin-bottom: 40px;
             opacity: 0.95;
             line-height: 1.6;
+        }
+
+        /* Hero Form - Updated v1.1 */
+        .hero-form-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .hero-form-container h3 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .hero-form-container p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cccccc;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        .form-group input::placeholder {
+            color: #999999;
+            opacity: 1;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: #ffffff;
+        }
+
+        .hero-form-container .submit-button {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-form-container .submit-button:hover {
+            background: #c9a03d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(225, 186, 71, 0.3);
+        }
+
+        /* Override general form styles for hero form */
+        .hero-form-container .form-group label {
+            color: #000000 !important;
+        }
+
+        .hero-form-container .form-group input,
+        .hero-form-container .form-group select {
+            background: #ffffff !important;
+            color: #1a1a1a !important;
+            border: 2px solid #cccccc !important;
+        }
+
+        .hero-form-container .form-group input::placeholder {
+            color: #999999 !important;
+        }
+
+        .hero-form-container .form-group input:focus,
+        .hero-form-container .form-group select:focus {
+            background: #ffffff !important;
+            border-color: var(--primary-color) !important;
         }
 
         .cta-button {
@@ -212,41 +362,112 @@
         }
 
         .comparison-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .comparison-item {
             position: relative;
+            max-width: 800px;
+            margin: 0 auto 50px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        .comparison-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .comparison-item img {
+        .comparison-wrapper {
+            position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .comparison-before,
+        .comparison-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .comparison-before img,
+        .comparison-after img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        .comparison-before {
+            z-index: 2;
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .comparison-after {
+            z-index: 1;
+        }
+
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: 3;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+
+        .comparison-slider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .comparison-slider::after {
+            content: '⟷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            z-index: 1;
         }
 
         .comparison-label {
             position: absolute;
             top: 20px;
-            left: 20px;
             background: var(--primary-color);
             color: var(--secondary-color);
             padding: 10px 20px;
             font-weight: 700;
             font-family: 'Montserrat', sans-serif;
             border-radius: 5px;
+            z-index: 4;
+        }
+
+        .comparison-label.before {
+            left: 20px;
+        }
+
+        .comparison-label.after {
+            right: 20px;
+        }
+
+        .comparison-hint {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
         /* Portfolio Section - INTEREST */
@@ -256,29 +477,136 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
             margin-bottom: 50px;
         }
 
         .portfolio-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            height: 300px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            aspect-ratio: 1;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .portfolio-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover::after {
+            opacity: 1;
         }
 
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Instagram-style lightbox */
+        .portfolio-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .portfolio-lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
         }
 
         /* Features Section - DESIRE */
@@ -630,12 +958,132 @@
 
         /* Responsive Design */
         @media (max-width: 968px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .hero-section {
+                min-height: 100vh;
+                height: auto;
+                padding: 0;
+                display: flex;
+                align-items: flex-start;
+                padding-top: 120px;
             }
 
-            .hero-content p {
+            .hero-content {
+                justify-content: center;
+                flex-direction: column;
+                gap: 50px;
+                padding: 0 20px;
+                width: 100%;
+            }
+
+            .hero-text {
+                min-width: 100%;
+                text-align: center;
+                padding-bottom: 0;
+            }
+
+            .hero-form-container {
+                max-width: 100%;
+                margin: 0 auto;
+                width: 100%;
+                padding: 15px;
+            }
+
+            .hero-form-container h3 {
                 font-size: 1.1rem;
+                margin-bottom: 4px;
+            }
+
+            .hero-form-container p {
+                font-size: 0.8rem;
+                margin-bottom: 12px;
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            .form-group label {
+                font-size: 0.8rem;
+                margin-bottom: 3px;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 9px;
+                font-size: 0.9rem;
+            }
+
+            .hero-form-container .submit-button {
+                padding: 11px;
+                font-size: 0.95rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+                margin-bottom: 20px;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 0;
+                padding: 0 15px;
+            }
+
+            .comparison-wrapper {
+                height: 350px;
+            }
+
+            .comparison-slider::before {
+                width: 40px;
+                height: 40px;
+            }
+
+            .comparison-slider::after {
+                font-size: 20px;
+            }
+
+            .comparison-label {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+
+            .comparison-hint {
+                font-size: 0.8rem;
+                padding: 0 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 85vh;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
             }
 
             .comparison-container,
@@ -672,7 +1120,22 @@
         }
 
         @media (max-width: 600px) {
-            .hero-content h1 {
+            /* Home */
+            #home {
+                min-height: 937px;
+            }
+
+            /* Hero content */
+            #home .hero-content {
+                transform: translateX(0px) translateY(0px);
+            }
+
+            /* Hero form container */
+            #home .hero-content .hero-form-container {
+                width: 88% !important;
+            }
+
+            .hero-text h1 {
                 font-size: 2rem;
             }
 
@@ -682,7 +1145,8 @@
             }
 
             .logo img {
-                height: 45px;
+                height: 65px;
+                top: -8px;
             }
 
             .nav-cta {
@@ -727,14 +1191,53 @@
 
     <!-- Hero Section - ATTENTION -->
     <section class="hero-section" id="home">
-        <video class="hero-video-bg" autoplay muted loop playsinline>
-            <source src="1 - Hero Section - First Impression/hero-kitchen-showcase-video.mp4" type="video/mp4">
-        </video>
+        <div class="hero-slideshow">
+            <div class="hero-slide active">
+                <img src="MORE MATERIALS/hero/Snapinst.app_471409545_605857828504025_7462411292612250991_n_1080.jpg" alt="Kitchen Renovation 1">
+            </div>
+            <div class="hero-slide">
+                <img src="MORE MATERIALS/hero/WhatsApp Image 2025-03-13 at 15.42.50 (2).jpeg" alt="Kitchen Renovation 2">
+            </div>
+            <div class="hero-slide">
+                <img src="MORE MATERIALS/hero/zLBcsu7Q.jpeg" alt="Kitchen Renovation 3">
+            </div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Transform Your Kitchen Into Your <span class="highlight">Dream Space</span></h1>
-            <p>Premium kitchen renovations built with precision, passion, and unmatched craftsmanship. From concept to completion, we bring your vision to life.</p>
-            <a href="#contact-form" class="cta-button">Get My Free Kitchen Estimate</a>
+            <div class="hero-text">
+                <h1>Transform Your Kitchen Into Your <span class="highlight">Dream Space</span></h1>
+                <p>Premium kitchen renovations built with precision, passion, and unmatched craftsmanship. From concept to completion, we bring your vision to life.</p>
+            </div>
+
+            <!-- Hero Form -->
+            <div class="hero-form-container">
+                <h3>Get Your Free Kitchen Estimate</h3>
+                <p>Start your transformation today</p>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="kitchen-goal">What's the main goal for your kitchen renovation? *</label>
+                        <select id="kitchen-goal" name="renovation-goal" required>
+                            <option value="">Select your goal</option>
+                            <option value="full-remodel">Full remodel – new layout, cabinets, and finishes</option>
+                            <option value="partial-upgrade">Partial upgrade – countertops, backsplash, or flooring</option>
+                            <option value="not-sure">Not sure yet – I'd like some guidance</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-button">Get Free Kitchen Consultation</button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -745,14 +1248,18 @@
             <p class="section-subtitle">Outdated kitchens turned into stunning, functional masterpieces. This could be your kitchen next.</p>
             
             <div class="comparison-container fade-in">
-                <div class="comparison-item">
-                    <span class="comparison-label">BEFORE</span>
-                    <img src="2 - Before and After Transformation/before-old-kitchen.jpg" alt="Old Kitchen Before Renovation">
+                <div class="comparison-wrapper">
+                    <div class="comparison-after">
+                        <img src="2 - Before and After Transformation/after-new-kitchen.jpg" alt="Beautiful Kitchen After Renovation">
+                    </div>
+                    <div class="comparison-before">
+                        <img src="2 - Before and After Transformation/before-old-kitchen.jpg" alt="Old Kitchen Before Renovation">
+                    </div>
+                    <div class="comparison-slider"></div>
+                    <span class="comparison-label before">BEFORE</span>
+                    <span class="comparison-label after">AFTER</span>
                 </div>
-                <div class="comparison-item">
-                    <span class="comparison-label">AFTER</span>
-                    <img src="2 - Before and After Transformation/after-new-kitchen.jpg" alt="Beautiful Kitchen After Renovation">
-                </div>
+                <p class="comparison-hint">← Drag the slider to see the transformation →</p>
             </div>
 
             <div style="text-align: center;">
@@ -768,23 +1275,44 @@
             <p class="section-subtitle">Every project is a testament to our commitment to excellence. Explore kitchens we've built for homeowners just like you.</p>
             
             <div class="portfolio-grid fade-in">
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-index="0">
                     <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-1.jpg" alt="Modern Blue and White Kitchen">
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-index="1">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-2.jpg" alt="Blue and White Kitchen Detail">
+                </div>
+                <div class="portfolio-item" data-index="2">
                     <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-overview-island.jpg" alt="Kitchen with Island Overview">
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-index="3">
                     <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-and-window.jpg" alt="Kitchen Sink with Window View">
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-index="4">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-closeup.jpg" alt="Kitchen Sink Closeup">
+                </div>
+                <div class="portfolio-item" data-index="5">
                     <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-1.jpg" alt="Custom Black Kitchen Design">
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-index="6">
                     <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-2.jpg" alt="Elegant Black Kitchen Cabinets">
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-index="7">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-3.jpg" alt="Black Kitchen Detail">
+                </div>
+                <div class="portfolio-item" data-index="8">
                     <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-wide.jpg" alt="Wide View Custom Kitchen">
+                </div>
+                <div class="portfolio-item" data-index="9">
+                    <img src="MORE MATERIALS/imagens/51918b8d-cfde-40ef-b321-30fb9e4ec24a (1).jpg" alt="Custom Kitchen Project">
+                </div>
+                <div class="portfolio-item" data-index="10">
+                    <img src="MORE MATERIALS/imagens/6fdb1cc0-8d4f-4176-99ac-480f12c5bea5 (1).jpg" alt="Kitchen Renovation Detail">
+                </div>
+                <div class="portfolio-item" data-index="11">
+                    <img src="MORE MATERIALS/imagens/d7e2b09a-8129-4be1-96e0-e53b78ba04bd (1).jpg" alt="Elegant Kitchen Layout">
+                </div>
+                <div class="portfolio-item" data-index="12">
+                    <img src="MORE MATERIALS/imagens/xhGYIZvA.jpeg" alt="Kitchen Craftsmanship">
                 </div>
             </div>
 
@@ -793,6 +1321,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Lightbox for Portfolio -->
+    <div class="portfolio-lightbox" id="portfolioLightbox">
+        <button class="lightbox-close" id="closeLightbox">×</button>
+        <button class="lightbox-nav lightbox-prev" id="prevImage">‹</button>
+        <button class="lightbox-nav lightbox-next" id="nextImage">›</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+        </div>
+    </div>
 
     <!-- Features Section - DESIRE -->
     <section class="features-section" id="why-choose-us">
@@ -916,11 +1454,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="message">Tell us about your project (optional)</label>
-                        <textarea id="message" name="message" placeholder="Share your vision, budget, timeline, or any specific requirements..."></textarea>
-                    </div>
-
                     <button type="submit" class="submit-button">Get My Free Estimate Now</button>
 
                     <div class="privacy-notice">
@@ -960,9 +1493,13 @@
             function detectCampaign() {
                 const path = window.location.pathname || '';
                 const qs = new URLSearchParams(window.location.search);
-                if (path.startsWith('/meta')) return 'meta';
-                if (path.startsWith('/google')) return 'google';
-                return qs.get('campaign') || 'main';
+                const url = window.location.href.toLowerCase();
+                
+                // Detectar plataforma baseado na URL
+                if (url.includes('google')) return 'GOOGLE ADS';
+                if (url.includes('meta') || url.includes('facebook') || url.includes('instagram')) return 'META';
+                
+                return 'ORGANIC';
             }
 
             function toObject(formData) {
@@ -1003,14 +1540,23 @@
                 const formData = new FormData(form);
                 const data = toObject(formData);
 
+                // Estruturar payload conforme solicitado
                 const payload = {
-                    ...data,
-                    campaign: detectCampaign(),
-                    landing_url: window.location.href,
-                    page_title: document.title,
-                    referrer: document.referrer || null,
-                    user_agent: navigator.userAgent,
-                    submitted_at: new Date().toISOString()
+                    NOME: data.name || '',
+                    EMAIL: data.email || '',
+                    TELEFONE: data.phone || '',
+                    PERGUNTA: data['renovation-goal'] || '',
+                    PLATAFORMA: detectCampaign(),
+                    FONTE: document.title || window.location.pathname,
+                    QUANDO: new Date().toLocaleString('pt-BR', { 
+                        timeZone: 'America/New_York',
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    })
                 };
 
                 // Fire webhook and then redirect preserving original GET behavior
@@ -1020,9 +1566,9 @@
                         if (Array.isArray(v)) v.forEach(val => params.append(k, String(val)));
                         else if (v !== undefined && v !== null) params.append(k, String(v));
                     });
-                    // add campaign and url to thank-you as well (useful for debugging)
-                    params.set('campaign', String(payload.campaign));
-                    params.set('landing_url', String(payload.landing_url));
+                    // add campaign info to thank-you as well
+                    params.set('campaign', String(payload.PLATAFORMA));
+                    params.set('landing_url', window.location.href);
 
                     window.location.href = '/thank-you.html' + (params.toString() ? ('?' + params.toString()) : '');
                 });
@@ -1033,6 +1579,26 @@
                 form.addEventListener('submit', handleSubmit);
             });
         })();
+
+        // Hero Slideshow
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            heroSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            heroSlides[currentSlide].classList.add('active');
+            
+            // Restart zoom animation
+            const img = heroSlides[currentSlide].querySelector('img');
+            img.style.animation = 'none';
+            setTimeout(() => {
+                img.style.animation = 'heroZoom 5s ease-in-out forwards';
+            }, 10);
+        }
+
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1078,6 +1644,134 @@
             } else {
                 navbar.style.background = 'rgba(1, 1, 1, 0.95)';
             }
+        });
+
+        // Before/After Comparison Slider
+        const initComparisonSlider = () => {
+            const slider = document.querySelector('.comparison-slider');
+            const beforeImage = document.querySelector('.comparison-before');
+            const wrapper = document.querySelector('.comparison-wrapper');
+            
+            if (!slider || !beforeImage || !wrapper) return;
+
+            let isDragging = false;
+
+            const updateSlider = (x) => {
+                const rect = wrapper.getBoundingClientRect();
+                const offsetX = x - rect.left;
+                const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+                
+                slider.style.left = percentage + '%';
+                beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            };
+
+            const handleMove = (e) => {
+                if (!isDragging) return;
+                
+                const x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                updateSlider(x);
+            };
+
+            const startDragging = (e) => {
+                isDragging = true;
+                wrapper.style.cursor = 'ew-resize';
+            };
+
+            const stopDragging = () => {
+                isDragging = false;
+                wrapper.style.cursor = 'default';
+            };
+
+            // Mouse events
+            slider.addEventListener('mousedown', startDragging);
+            document.addEventListener('mousemove', handleMove);
+            document.addEventListener('mouseup', stopDragging);
+
+            // Touch events
+            slider.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                startDragging(e);
+            });
+            document.addEventListener('touchmove', handleMove, { passive: false });
+            document.addEventListener('touchend', stopDragging);
+
+            // Click to move
+            wrapper.addEventListener('click', (e) => {
+                if (e.target === slider || slider.contains(e.target)) return;
+                const x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                updateSlider(x);
+            });
+        };
+
+        // Initialize comparison slider when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initComparisonSlider);
+        } else {
+            initComparisonSlider();
+        }
+
+        // Instagram-style Portfolio Lightbox
+        const portfolioLightbox = document.getElementById('portfolioLightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const closeLightbox = document.getElementById('closeLightbox');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        let currentImageIndex = 0;
+        const images = Array.from(portfolioItems).map(item => ({
+            src: item.querySelector('img').src,
+            alt: item.querySelector('img').alt
+        }));
+
+        const openLightbox = (index) => {
+            currentImageIndex = index;
+            lightboxImage.src = images[index].src;
+            lightboxImage.alt = images[index].alt;
+            portfolioLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeLightboxFn = () => {
+            portfolioLightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        const showNextImage = () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            lightboxImage.src = images[currentImageIndex].src;
+            lightboxImage.alt = images[currentImageIndex].alt;
+        };
+
+        const showPrevImage = () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            lightboxImage.src = images[currentImageIndex].src;
+            lightboxImage.alt = images[currentImageIndex].alt;
+        };
+
+        // Event Listeners
+        portfolioItems.forEach((item, index) => {
+            item.addEventListener('click', () => openLightbox(index));
+        });
+
+        closeLightbox.addEventListener('click', closeLightboxFn);
+        nextImage.addEventListener('click', showNextImage);
+        prevImage.addEventListener('click', showPrevImage);
+
+        // Close on background click
+        portfolioLightbox.addEventListener('click', (e) => {
+            if (e.target === portfolioLightbox) {
+                closeLightboxFn();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!portfolioLightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeLightboxFn();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
         });
     </script>
 
