@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitchen Renovation by Wolf Carpenters | Transform Your Dream Kitchen</title>
-    <meta name="description" content="Expert kitchen renovation services. From concept to completion, we build custom kitchens with precision and passion. Get your free estimate today!">
+    <title>Don't Wait Another Year | Wolf Carpenters Kitchen Remodeling</title>
+    <meta name="description" content="Transform the heart of your home. More than a kitchen—it's where your family connects. Quality craftsmanship that adds value to your home. Free estimate in 24h.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -99,6 +99,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            padding-top: 120px;
         }
 
         .hero-slideshow {
@@ -210,6 +211,8 @@
             max-width: 420px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-form-container h3 {
@@ -226,41 +229,54 @@
             text-align: center;
         }
 
-        .form-group {
+        .hero-form-container .form-group {
             margin-bottom: 12px;
         }
 
-        .form-group label {
+        .hero-form-container .form-group label {
             display: block;
-            color: #000000;
+            color: #000000 !important;
             font-weight: 600;
             margin-bottom: 4px;
             font-size: 0.85rem;
         }
 
-        .form-group input,
-        .form-group select {
+        .hero-form-container .form-group input,
+        .hero-form-container .form-group select {
             width: 100%;
             padding: 10px;
-            border: 2px solid #cccccc;
+            border: 2px solid #cccccc !important;
             border-radius: 5px;
             font-size: 0.95rem;
             transition: border-color 0.3s ease;
             font-family: 'Open Sans', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
+            background: #ffffff !important;
+            color: #333333 !important;
+            -webkit-text-fill-color: #333333 !important;
         }
 
-        .form-group input::placeholder {
-            color: #999999;
-            opacity: 1;
+        .hero-form-container .form-group input::placeholder {
+            color: #999999 !important;
+            opacity: 1 !important;
+            -webkit-text-fill-color: #999999 !important;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .hero-form-container .form-group select {
+            color: #333333 !important;
+            -webkit-text-fill-color: #333333 !important;
+        }
+
+        .hero-form-container .form-group select option {
+            color: #333333 !important;
+            background: #ffffff !important;
+        }
+
+        .hero-form-container .form-group input:focus,
+        .hero-form-container .form-group select:focus {
             outline: none;
-            border-color: var(--primary-color);
-            background: #ffffff;
+            border-color: var(--primary-color) !important;
+            background: #ffffff !important;
+            color: #333333 !important;
         }
 
         .hero-form-container .submit-button {
@@ -956,6 +972,30 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
+        /* Desktop Adjustments */
+        #home .hero-form-container {
+            max-height: 899px;
+        }
+
+        #home h3 {
+            transform: translateX(0px) translateY(0px);
+        }
+
+        @media (min-width: 969px) {
+            #home .hero-form-container {
+                margin-top: 132px;
+            }
+
+            #home {
+                padding-bottom: 63px;
+                padding-top: 15px;
+            }
+
+            #home h3 {
+                font-size: 20px;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 968px) {
             .hero-section {
@@ -1122,12 +1162,19 @@
         @media (max-width: 600px) {
             /* Home */
             #home {
-                min-height: 937px;
+                height: 1384px;
             }
 
             /* Hero content */
             #home .hero-content {
                 transform: translateX(0px) translateY(0px);
+            }
+
+            /* Hero text */
+            #home .hero-text {
+                display: inline-block;
+                transform: translateX(0px) translateY(0px);
+                margin-top: -50px;
             }
 
             /* Hero form container */
@@ -1193,20 +1240,20 @@
     <section class="hero-section" id="home">
         <div class="hero-slideshow">
             <div class="hero-slide active">
-                <img src="MORE MATERIALS/hero/Snapinst.app_471409545_605857828504025_7462411292612250991_n_1080.jpg" alt="Kitchen Renovation 1">
+                <img src="MORE MATERIALS/hero/Snapinst.app_471409545_605857828504025_7462411292612250991_n_1080.webp" alt="Kitchen Renovation 1">
             </div>
             <div class="hero-slide">
-                <img src="MORE MATERIALS/hero/WhatsApp Image 2025-03-13 at 15.42.50 (2).jpeg" alt="Kitchen Renovation 2">
+                <img src="MORE MATERIALS/hero/WhatsApp Image 2025-03-13 at 15.42.50 (2).webp" alt="Kitchen Renovation 2">
             </div>
             <div class="hero-slide">
-                <img src="MORE MATERIALS/hero/zLBcsu7Q.jpeg" alt="Kitchen Renovation 3">
+                <img src="MORE MATERIALS/hero/zLBcsu7Q.webp" alt="Kitchen Renovation 3">
             </div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Transform Your Kitchen Into Your <span class="highlight">Dream Space</span></h1>
-                <p>Premium kitchen renovations built with precision, passion, and unmatched craftsmanship. From concept to completion, we bring your vision to life.</p>
+                <h1>Don't Wait Another Year To <span class="highlight">Fix Your Kitchen</span></h1>
+                <p>More than a kitchen. It's where your family connects. Transform the heart of your home into a space you'll love gathering in—every single day.</p>
             </div>
 
             <!-- Hero Form -->
@@ -1215,20 +1262,20 @@
                 <p>Start your transformation today</p>
                 <form action="#" method="POST">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name">
+                        <label for="hero-name">Full Name *</label>
+                        <input type="text" id="hero-name" name="name" required placeholder="Your name">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        <label for="hero-email">Email Address *</label>
+                        <input type="email" id="hero-email" name="email" required placeholder="your.email@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                        <label for="hero-phone">Phone Number *</label>
+                        <input type="tel" id="hero-phone" name="phone" required placeholder="(555) 123-4567">
                     </div>
                     <div class="form-group">
-                        <label for="kitchen-goal">What's the main goal for your kitchen renovation? *</label>
-                        <select id="kitchen-goal" name="renovation-goal" required>
+                        <label for="hero-kitchen-goal">What's the main goal for your kitchen renovation? *</label>
+                        <select id="hero-kitchen-goal" name="renovation-goal" required>
                             <option value="">Select your goal</option>
                             <option value="full-remodel">Full remodel – new layout, cabinets, and finishes</option>
                             <option value="partial-upgrade">Partial upgrade – countertops, backsplash, or flooring</option>
@@ -1244,16 +1291,16 @@
     <!-- Before & After Section - INTEREST -->
     <section class="before-after-section" id="transformations">
         <div class="container">
-            <h2 class="section-title">See The <span style="color: var(--primary-color);">Transformation</span></h2>
-            <p class="section-subtitle">Outdated kitchens turned into stunning, functional masterpieces. This could be your kitchen next.</p>
+            <h2 class="section-title">Imagine Your Family <span style="color: var(--primary-color);">In This Kitchen</span></h2>
+            <p class="section-subtitle">From outdated and cramped to a space you're proud to show off. Your kitchen can look like this too.</p>
             
             <div class="comparison-container fade-in">
                 <div class="comparison-wrapper">
                     <div class="comparison-after">
-                        <img src="2 - Before and After Transformation/after-new-kitchen.jpg" alt="Beautiful Kitchen After Renovation">
+                        <img src="BEFORE AND AFTER/after-new-kitchen.webp" alt="Beautiful Kitchen After Renovation">
                     </div>
                     <div class="comparison-before">
-                        <img src="2 - Before and After Transformation/before-old-kitchen.jpg" alt="Old Kitchen Before Renovation">
+                        <img src="BEFORE AND AFTER/before.webp" alt="Old Kitchen Before Renovation">
                     </div>
                     <div class="comparison-slider"></div>
                     <span class="comparison-label before">BEFORE</span>
@@ -1263,7 +1310,7 @@
             </div>
 
             <div style="text-align: center;">
-                <a href="#contact-form" class="cta-button">Start My Kitchen Renovation Today</a>
+                <a href="#contact-form" class="cta-button">Make This Your Reality</a>
             </div>
         </div>
     </section>
@@ -1271,48 +1318,48 @@
     <!-- Portfolio Section - INTEREST -->
     <section class="portfolio-section" id="portfolio">
         <div class="container">
-            <h2 class="section-title">Our <span style="color: var(--primary-color);">Custom Kitchen</span> Portfolio</h2>
-            <p class="section-subtitle">Every project is a testament to our commitment to excellence. Explore kitchens we've built for homeowners just like you.</p>
+            <h2 class="section-title">Kitchens Families <span style="color: var(--primary-color);">Love Coming Home To</span></h2>
+            <p class="section-subtitle">These homeowners invested in their homes—and now enjoy a space that brings the family together every day.</p>
             
             <div class="portfolio-grid fade-in">
                 <div class="portfolio-item" data-index="0">
-                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-1.jpg" alt="Modern Blue and White Kitchen">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-1.webp" alt="Modern Blue and White Kitchen">
                 </div>
                 <div class="portfolio-item" data-index="1">
-                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-2.jpg" alt="Blue and White Kitchen Detail">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-blue-white-kitchen-2.webp" alt="Blue and White Kitchen Detail">
                 </div>
                 <div class="portfolio-item" data-index="2">
-                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-overview-island.jpg" alt="Kitchen with Island Overview">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-overview-island.webp" alt="Kitchen with Island Overview">
                 </div>
                 <div class="portfolio-item" data-index="3">
-                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-and-window.jpg" alt="Kitchen Sink with Window View">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-and-window.webp" alt="Kitchen Sink with Window View">
                 </div>
                 <div class="portfolio-item" data-index="4">
-                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-closeup.jpg" alt="Kitchen Sink Closeup">
+                    <img src="3 - Portfolio - Another Kitchen Renovation/portfolio-sink-closeup.webp" alt="Kitchen Sink Closeup">
                 </div>
                 <div class="portfolio-item" data-index="5">
-                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-1.jpg" alt="Custom Black Kitchen Design">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-1.webp" alt="Custom Black Kitchen Design">
                 </div>
                 <div class="portfolio-item" data-index="6">
-                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-2.jpg" alt="Elegant Black Kitchen Cabinets">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-2.webp" alt="Elegant Black Kitchen Cabinets">
                 </div>
                 <div class="portfolio-item" data-index="7">
-                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-3.jpg" alt="Black Kitchen Detail">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-3.webp" alt="Black Kitchen Detail">
                 </div>
                 <div class="portfolio-item" data-index="8">
-                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-wide.jpg" alt="Wide View Custom Kitchen">
+                    <img src="4 - Project Highlights - Custom Kitchens/custom-black-kitchen-wide.webp" alt="Wide View Custom Kitchen">
                 </div>
                 <div class="portfolio-item" data-index="9">
-                    <img src="MORE MATERIALS/imagens/51918b8d-cfde-40ef-b321-30fb9e4ec24a (1).jpg" alt="Custom Kitchen Project">
+                    <img src="MORE MATERIALS/imagens/51918b8d-cfde-40ef-b321-30fb9e4ec24a (1).webp" alt="Custom Kitchen Project">
                 </div>
                 <div class="portfolio-item" data-index="10">
-                    <img src="MORE MATERIALS/imagens/6fdb1cc0-8d4f-4176-99ac-480f12c5bea5 (1).jpg" alt="Kitchen Renovation Detail">
+                    <img src="MORE MATERIALS/imagens/6fdb1cc0-8d4f-4176-99ac-480f12c5bea5 (1).webp" alt="Kitchen Renovation Detail">
                 </div>
                 <div class="portfolio-item" data-index="11">
-                    <img src="MORE MATERIALS/imagens/d7e2b09a-8129-4be1-96e0-e53b78ba04bd (1).jpg" alt="Elegant Kitchen Layout">
+                    <img src="MORE MATERIALS/imagens/d7e2b09a-8129-4be1-96e0-e53b78ba04bd (1).webp" alt="Elegant Kitchen Layout">
                 </div>
                 <div class="portfolio-item" data-index="12">
-                    <img src="MORE MATERIALS/imagens/xhGYIZvA.jpeg" alt="Kitchen Craftsmanship">
+                    <img src="MORE MATERIALS/imagens/xhGYIZvA.webp" alt="Kitchen Craftsmanship">
                 </div>
             </div>
 
@@ -1382,33 +1429,33 @@
         <div class="container">
             <div class="team-content fade-in">
                 <div class="team-image">
-                    <img src="6 - Meet the Team - Wolf Carpenters/team-full-group.jpg" alt="Wolf Carpenters Team">
+                    <img src="6 - Meet the Team - Wolf Carpenters/team-full-group.webp" alt="Wolf Carpenters Team">
                 </div>
                 <div class="team-text">
-                    <h2>Meet The Team Behind Your <span style="color: var(--primary-color);">Dream Kitchen</span></h2>
-                    <p>We're not just contractors—we're a family of passionate craftsmen dedicated to transforming your kitchen into a space you'll love for years to come.</p>
-                    <p>With precision planning, meticulous attention to detail, and a commitment to excellence, we've helped hundreds of homeowners create their perfect kitchens.</p>
-                    <p><strong>The heart of your home deserves to be built with precision and passion.</strong></p>
+                    <h2>Your Kitchen <span style="color: var(--primary-color);">Deserves Expert Care</span></h2>
+                    <p>We're a family business that treats every kitchen like it's our own. For over 10 years, we've helped homeowners create spaces where families gather, memories are made, and homes gain value.</p>
+                    <p>When you choose Wolf, you're not just getting a renovation—you're investing in quality craftsmanship that lasts, and a kitchen your family will love for decades.</p>
+                    <p><strong>Your home is your biggest investment. Shouldn't your kitchen reflect that?</strong></p>
                     
                     <div class="team-stats">
                         <div class="stat-item">
                             <div class="stat-number">500+</div>
-                            <div class="stat-label">Kitchens Built</div>
+                            <div class="stat-label">Families Served</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">25+</div>
+                            <div class="stat-number">10+</div>
                             <div class="stat-label">Years Experience</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">100%</div>
-                            <div class="stat-label">Satisfaction Rate</div>
+                            <div class="stat-label">Customer Satisfaction</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div style="text-align: center;">
-                <a href="#contact-form" class="cta-button">Start My Kitchen Renovation Today</a>
+                <a href="#contact-form" class="cta-button">Get Your Free Estimate Today</a>
             </div>
         </div>
     </section>
@@ -1416,8 +1463,8 @@
     <!-- Form Section - ACTION -->
     <section class="form-section" id="contact-form">
         <div class="container">
-            <h2 class="section-title">Get Your Free Kitchen Estimate</h2>
-            <p class="section-subtitle">Ready to transform your kitchen? Fill out the form below and we'll contact you within 24 hours with a personalized quote.</p>
+            <h2 class="section-title">Stop Putting It Off. Start Your Kitchen Today.</h2>
+            <p class="section-subtitle">Get your free estimate in 24 hours. No pressure, no obligation—just honest pricing and expert advice.</p>
             
             <div class="form-container fade-in">
                 <form id="kitchenForm" action="thank-you.html" method="GET">
