@@ -1546,14 +1546,21 @@
         (function () {
             const WEBHOOK_URL = 'https://hook.us2.make.com/m6c3nxfa5estl25ymykzq44hlvvfnajp';
 
-            function detectCampaign() {
-                const path = window.location.pathname || '';
-                const qs = new URLSearchParams(window.location.search);
+            function detectPlatform() {
                 const url = window.location.href.toLowerCase();
+                const params = new URLSearchParams(window.location.search);
+                
+                // Verifica parâmetros UTM primeiro
+                const utmSource = params.get('utm_source')?.toLowerCase() || '';
+                const utmMedium = params.get('utm_medium')?.toLowerCase() || '';
                 
                 // Detectar plataforma baseado na URL
-                if (url.includes('google')) return 'GOOGLE ADS';
-                if (url.includes('meta') || url.includes('facebook') || url.includes('instagram')) return 'META';
+                if (url.includes('google') || utmSource.includes('google') || utmMedium.includes('cpc') || utmMedium.includes('ppc')) {
+                    return 'GOOGLE';
+                }
+                if (url.includes('meta') || url.includes('facebook') || url.includes('instagram') || utmSource.includes('meta') || utmSource.includes('facebook') || utmSource.includes('instagram')) {
+                    return 'META';
+                }
                 
                 return 'ORGANIC';
             }
@@ -1596,23 +1603,18 @@
                 const formData = new FormData(form);
                 const data = toObject(formData);
 
+                const platform = detectPlatform();
+                
                 // Estruturar payload conforme solicitado
                 const payload = {
-                    NOME: data.name || '',
-                    EMAIL: data.email || '',
-                    TELEFONE: data.phone || '',
-                    PERGUNTA: data['renovation-goal'] || '',
-                    PLATAFORMA: detectCampaign(),
-                    FONTE: document.title || window.location.pathname,
-                    QUANDO: new Date().toLocaleString('pt-BR', { 
-                        timeZone: 'America/New_York',
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    })
+                    name: data.name || '',
+                    email: data.email || '',
+                    phone: data.phone || '',
+                    Qualified_question: data['renovation-goal'] || '',
+                    campaign_name: 'Kitchen Remodeling',
+                    page_name: 'Kitchen Remodeling | Wolf Carpenters',
+                    FONTE: platform,
+                    PLATAFORMA: platform
                 };
 
                 // Fire webhook and then redirect preserving original GET behavior
@@ -1623,7 +1625,8 @@
                         else if (v !== undefined && v !== null) params.append(k, String(v));
                     });
                     // add campaign info to thank-you as well
-                    params.set('campaign', String(payload.PLATAFORMA));
+                    params.set('platform', String(payload.PLATAFORMA));
+                    params.set('campaign', String(payload.campaign_name));
                     params.set('landing_url', window.location.href);
 
                     window.location.href = '/thank-you.html' + (params.toString() ? ('?' + params.toString()) : '');
