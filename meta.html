@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wolf Carpenters - Kitchen Remodeling | Meta</title>
     <script>
-        var baseUrl = window.location.origin;
-        window.location.href = baseUrl + '/?fonte=meta&plataforma=META';
+        sessionStorage.setItem('fonte', 'meta');
+        sessionStorage.setItem('plataforma', 'META');
+        window.location.href = window.location.origin + '/';
     </script>
 </head>
 <body>

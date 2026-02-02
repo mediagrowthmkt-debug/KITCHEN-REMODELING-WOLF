@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wolf Carpenters - Kitchen Remodeling | Google</title>
     <script>
-        var baseUrl = window.location.origin;
-        window.location.href = baseUrl + '/?fonte=google&plataforma=GOOGLE';
+        sessionStorage.setItem('fonte', 'google');
+        sessionStorage.setItem('plataforma', 'GOOGLE');
+        window.location.href = window.location.origin + '/';
     </script>
 </head>
 <body>

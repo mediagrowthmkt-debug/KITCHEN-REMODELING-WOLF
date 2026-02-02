@@ -1853,11 +1853,18 @@
             if (e.key === 'ArrowLeft') showPrevImage();
         });
 
-        // Capturar parâmetros de URL para tracking de fonte e plataforma
+        // Capturar parâmetros de tracking (sessionStorage ou URL params)
         (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const fonte = urlParams.get('fonte') || '';
-            const plataforma = urlParams.get('plataforma') || '';
+            // Primeiro tenta sessionStorage (vem das páginas /google.html ou /meta.html)
+            let fonte = sessionStorage.getItem('fonte') || '';
+            let plataforma = sessionStorage.getItem('plataforma') || '';
+            
+            // Se não tiver no sessionStorage, tenta URL params
+            if (!fonte || !plataforma) {
+                const urlParams = new URLSearchParams(window.location.search);
+                fonte = urlParams.get('fonte') || fonte;
+                plataforma = urlParams.get('plataforma') || plataforma;
+            }
             
             if (fonte && plataforma) {
                 // Preencher campos hidden em todos os formulários
@@ -1867,9 +1874,15 @@
                 fonteInputs.forEach(input => input.value = fonte);
                 plataformaInputs.forEach(input => input.value = plataforma);
                 
-                // Limpar URL removendo parâmetros
-                const cleanUrl = window.location.origin + window.location.pathname;
-                window.history.replaceState({}, document.title, cleanUrl);
+                // Limpar sessionStorage após usar
+                sessionStorage.removeItem('fonte');
+                sessionStorage.removeItem('plataforma');
+                
+                // Limpar URL se tiver parâmetros
+                if (window.location.search) {
+                    const cleanUrl = window.location.origin + window.location.pathname;
+                    window.history.replaceState({}, document.title, cleanUrl);
+                }
             }
         })();
     </script>
