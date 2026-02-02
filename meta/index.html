@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
-    <!-- Campaign Tracking Script -->
+    <!-- Campaign Tracking Script - MUST BE FIRST -->
     <script>
-        // Salva a origem da campanha no sessionStorage
-        sessionStorage.setItem('campanha_fonte', 'meta');
-        sessionStorage.setItem('campanha_plataforma', 'META');
+        // Salva a origem do visitante no sessionStorage
+        sessionStorage.setItem('fonte', 'meta');
+        sessionStorage.setItem('plataforma', 'META');
     </script>
-    <!-- End Campaign Tracking Script -->
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16525015107"></script>
     <script>
