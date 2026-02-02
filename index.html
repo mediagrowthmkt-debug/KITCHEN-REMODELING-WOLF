@@ -1852,6 +1852,26 @@
             if (e.key === 'ArrowRight') showNextImage();
             if (e.key === 'ArrowLeft') showPrevImage();
         });
+
+        // Capturar parâmetros de URL para tracking de fonte e plataforma
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fonte = urlParams.get('fonte') || '';
+            const plataforma = urlParams.get('plataforma') || '';
+            
+            if (fonte && plataforma) {
+                // Preencher campos hidden em todos os formulários
+                const fonteInputs = document.querySelectorAll('input[name="fonte"]');
+                const plataformaInputs = document.querySelectorAll('input[name="plataforma"]');
+                
+                fonteInputs.forEach(input => input.value = fonte);
+                plataformaInputs.forEach(input => input.value = plataforma);
+                
+                // Limpar URL removendo parâmetros
+                const cleanUrl = window.location.origin + window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        })();
     </script>
 
 </body>
