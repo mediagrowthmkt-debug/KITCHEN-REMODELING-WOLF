@@ -1599,6 +1599,9 @@
                 const utmMedium = params.get('utm_medium')?.toLowerCase() || '';
                 
                 // Detectar plataforma baseado na URL
+                if (url.includes('/pinterest/') || url.includes('pinterest')) {
+                    return 'PINTEREST';
+                }
                 if (url.includes('google') || utmSource.includes('google') || utmMedium.includes('cpc') || utmMedium.includes('ppc')) {
                     return 'GOOGLE';
                 }
