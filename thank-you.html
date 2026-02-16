@@ -38,6 +38,34 @@
     src="https://www.facebook.com/tr?id=4126955510867529&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Pinterest Tag -->
+    <script>
+    !function(e){if(!window.pintrk){window.pintrk = function () {
+    window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+    pintrk('load', '2612477220663', {em: '<user_email_address>'});
+    pintrk('page');
+    
+    // Only fire Lead event if coming from Pinterest campaign
+    const urlParams = new URLSearchParams(window.location.search);
+    const platform = urlParams.get('platform')?.toLowerCase() || '';
+    if (platform === 'pinterest') {
+        pintrk('track', 'lead', {
+            lead_type: 'Kitchen Remodeling Consultation',
+            value: 100,
+            currency: 'USD'
+        });
+    }
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none;" alt=""
+        src="https://ct.pinterest.com/v3/?event=init&tid=2612477220663&pd[em]=<hashed_email_address>&noscript=1" />
+    </noscript>
+    <!-- End Pinterest Tag -->
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You! - Wolf Carpenters Kitchen Renovation</title>
