@@ -1588,7 +1588,7 @@
 
         // Form submission -> send to webhook and then redirect to thank-you
         (function () {
-            const WEBHOOK_URL = 'https://hook.us2.make.com/m6c3nxfa5estl25ymykzq44hlvvfnajp';
+            const WEBHOOK_URL = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/862b4c8e-fdef-4a9d-bea9-028454670a5b';
 
             function detectPlatform() {
                 const url = window.location.href.toLowerCase();
@@ -1660,7 +1660,7 @@
                     Qualified_question: data['renovation-goal'] || '',
                     campaign_name: 'Kitchen Remodeling',
                     page_name: 'Kitchen Remodeling | Wolf Carpenters',
-                    FONTE: platform,
+                    FONTE: window.location.href,
                     PLATAFORMA: platform
                 };
 
