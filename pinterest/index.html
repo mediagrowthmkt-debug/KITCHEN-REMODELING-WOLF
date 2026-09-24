@@ -1275,6 +1275,31 @@
             }
         }
     </style>
+<script>
+/* Wolf: verificação humana sem reCAPTCHA visível (campo escondido + tempo mínimo). O n8n aceita o lead com
+   manual_human_check só quando o campo escondido está vazio e o formulário ficou aberto 3 s ou mais. */
+(function () {
+  var t0 = Date.now();
+  function addHoneypot() {
+    document.querySelectorAll('form').forEach(function (f) {
+      if (f.querySelector('input[name="wolf_hp_x7"]')) return;
+      var i = document.createElement('input');
+      i.type = 'text'; i.name = 'wolf_hp_x7'; i.tabIndex = -1; i.autocomplete = 'off';
+      i.setAttribute('aria-hidden', 'true');
+      i.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+      f.appendChild(i);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addHoneypot); else addHoneypot();
+  window.wolfHumanCheck = function () {
+    var hp = '';
+    document.querySelectorAll('input[name="wolf_hp_x7"]').forEach(function (i) { if (i.value) hp = i.value; });
+    var el = Date.now() - t0, out = {honeypot: hp, form_elapsed_ms: el};
+    if (!hp && el >= 3000) { out.manual_human_check = true; out.human_validation_method = 'manual_checkbox_fallback'; }
+    return out;
+  };
+})();
+</script>
 </head>
 <body>
     
@@ -1627,6 +1652,7 @@
             }
 
             function sendToWebhook(payload) {
+                payload = Object.assign({}, payload, window.wolfHumanCheck ? window.wolfHumanCheck() : {});
                 // Try standard fetch first
                 return fetch(WEBHOOK_URL, {
                     method: 'POST',
@@ -1675,11 +1701,7 @@
 
                 // Fire webhook and then redirect preserving original GET behavior
                 Promise.resolve(sendToWebhook(payload)).finally(() => {
-                    const params = new URLSearchParams();
-                    Object.entries(data).forEach(([k, v]) => {
-                        if (Array.isArray(v)) v.forEach(val => params.append(k, String(val)));
-                        else if (v !== undefined && v !== null) params.append(k, String(v));
-                    });
+                    const params = new URLSearchParams();   // sem nome/e-mail/telefone na URL (dado pessoal)
                     // add campaign info to thank-you as well
                     params.set('platform', String(payload.PLATAFORMA));
                     params.set('campaign', String(payload.campaign_name));
