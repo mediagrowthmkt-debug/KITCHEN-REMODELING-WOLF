@@ -9,14 +9,54 @@
         sessionStorage.setItem('plataforma', 'GOOGLE');
     </script>
 
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+        });
+        gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+        });
+        (function() {
+            var keys = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            try {
+                var params = new URLSearchParams(window.location.search);
+                var found = {};
+                var any = false;
+                keys.forEach(function(k) { var v = params.get(k); if (v) { found[k] = v; any = true; } });
+                if (any) sessionStorage.setItem('wolf_attr', JSON.stringify(found));
+            } catch (e) {}
+            window.wolfAttribution = function() {
+                try { return JSON.parse(sessionStorage.getItem('wolf_attr') || '{}'); } catch (e) { return {}; }
+            };
+            window.wolfUserData = function(email, phone) {
+                var ud = {};
+                var em = String(email || '').trim().toLowerCase();
+                if (/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(em)) ud.email = em;
+                var raw = String(phone || '').trim();
+                var dig = raw.replace(/\D/g, '');
+                if (raw.charAt(0) === '+' && dig.length >= 10) ud.phone_number = '+' + dig;
+                else if (dig.length === 10) ud.phone_number = '+1' + dig;
+                else if (dig.length === 11 && dig.charAt(0) === '1') ud.phone_number = '+' + dig;
+                return (ud.email || ud.phone_number) ? ud : null;
+            };
+        })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16525015107"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'AW-16525015107');
+      gtag('config', 'G-F1Z5VEGBBJ');
     </script>
 
     <!-- Meta Pixel Code -->
@@ -124,6 +164,34 @@
             color: var(--primary-color);
             transform: translateY(-2px);
         }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-call {
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-call:hover { color: #fff; }
+
+        .hero-call {
+            display: inline-block;
+            margin-top: 18px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .hero-call strong { color: var(--primary-color); }
 
         /* Hero Section - ATTENTION */
         .hero-section {
@@ -1235,6 +1303,10 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+
+            .nav-actions { gap: 12px; }
+            .nav-call { font-size: 0.8rem; }
+            .nav-actions .nav-cta { padding: 8px 12px; font-size: 0.8rem; }
         }
 
         /* Smooth Scroll */
@@ -1292,7 +1364,10 @@
             <div class="logo">
                 <img src="../0 - Brand Logo/logo-wolf-desktop (1).png" alt="Wolf Carpenters Logo">
             </div>
-            <a href="#contact-form" class="nav-cta">Get Free Estimate</a>
+            <div class="nav-actions">
+                <a href="tel:+17813364594" class="nav-call" data-track="nav_phone_cta">Call (781) 336-4594</a>
+                <a href="#contact-form" class="nav-cta">Get Free Estimate</a>
+            </div>
         </div>
     </nav>
 
@@ -1315,6 +1390,7 @@
                 <p class="hero-tagline" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px;">KITCHEN REMODELING</p>
                 <h1>Don't Wait Another Year To <span class="highlight">Fix Your Kitchen</span></h1>
                 <p>More than a kitchen. It's where your family connects. Transform the heart of your home into a space you'll love gathering in—every single day.</p>
+                <a href="tel:+17813364594" class="hero-call" data-track="hero_phone_cta">Prefer to talk? <strong>Call (781) 336-4594</strong></a>
             </div>
 
             <!-- Hero Form -->
@@ -1667,8 +1743,21 @@
                     campaign_name: 'Kitchen Remodeling',
                     page_name: 'Kitchen Remodeling | Wolf Carpenters',
                     FONTE: window.location.href,
-                    PLATAFORMA: platform
+                    PLATAFORMA: platform,
+                    project_goal: data['renovation-goal'] || ''
                 };
+                const attribution = window.wolfAttribution ? window.wolfAttribution() : {};
+                ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (k) {
+                    payload[k] = attribution[k] || '';
+                });
+                const userData = window.wolfUserData ? window.wolfUserData(payload.email, payload.phone) : null;
+                if (userData) {
+                    if (typeof window.gtag === 'function') window.gtag('set', 'user_data', userData);
+                    try { sessionStorage.setItem('wolf_ud', JSON.stringify(userData)); } catch (_) {}
+                }
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', 'kitchen_lead_submit', { project_goal: payload.project_goal, lead_source: platform, page_location: window.location.href });
+                }
 
                 // Fire webhook and then redirect preserving original GET behavior
                 Promise.resolve(sendToWebhook(payload)).finally(() => {
@@ -1677,14 +1766,50 @@
                     params.set('platform', String(payload.PLATAFORMA));
                     params.set('campaign', String(payload.campaign_name));
                     params.set('landing_url', window.location.href);
+                    const thankYouUrl = '/thank-you.html' + (params.toString() ? ('?' + params.toString()) : '');
 
-                    window.location.href = '/thank-you.html' + (params.toString() ? ('?' + params.toString()) : '');
+                    let redirected = false;
+                    const goThankYou = function () {
+                        if (redirected) return;
+                        redirected = true;
+                        window.location.href = thankYouUrl;
+                    };
+                    if (typeof window.gtag === 'function') {
+                        try { sessionStorage.setItem('wolf_conv_sent', '1'); } catch (_) {}
+                        window.gtag('event', 'conversion', {
+                            send_to: 'AW-16525015107/_FGsCODO8OkbEMPw3sc9',
+                            value: 1,
+                            currency: 'USD',
+                            event_category: 'lead',
+                            event_label: 'kitchen_lead_submit',
+                            event_callback: goThankYou,
+                            event_timeout: 1500
+                        });
+                    }
+                    window.setTimeout(goThankYou, 1500);
                 });
             }
 
             // Attach to all forms on the page
             document.querySelectorAll('form').forEach(form => {
                 form.addEventListener('submit', handleSubmit);
+            });
+
+            document.addEventListener('click', function (event) {
+                const target = event.target.closest('a[href^="tel:"]');
+                if (!target || typeof window.gtag !== 'function') return;
+                window.gtag('event', 'conversion', {
+                    send_to: 'AW-16525015107/IFTRCPrGsMccEMPw3sc9',
+                    value: 1,
+                    currency: 'USD',
+                    event_category: 'lead',
+                    event_label: 'kitchen_phone_click'
+                });
+                window.gtag('event', 'phone_call_click', {
+                    phone_number: '+17813364594',
+                    label: target.dataset.track || 'tel_link',
+                    page_location: window.location.href
+                });
             });
         })();
 
@@ -1907,8 +2032,9 @@
                 sessionStorage.removeItem('fonte');
                 sessionStorage.removeItem('plataforma');
                 
-                // Limpar URL se tiver parâmetros
-                if (window.location.search) {
+                // Limpar URL se tiver parâmetros (nunca quando tem gclid/UTM: o Google precisa ler)
+                const hasAdParams = /[?&](gclid|gbraid|wbraid|utm_[a-z]+)=/i.test(window.location.search);
+                if (window.location.search && !hasAdParams) {
                     const cleanUrl = window.location.origin + window.location.pathname;
                     window.history.replaceState({}, document.title, cleanUrl);
                 }

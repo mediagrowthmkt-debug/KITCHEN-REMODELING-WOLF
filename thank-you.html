@@ -7,17 +7,31 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'analytics_storage': 'denied', 'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+      gtag('consent', 'default', {'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted', 'analytics_storage': 'granted'});
       gtag('js', new Date());
 
       gtag('config', 'AW-16525015107');
+      gtag('config', 'G-F1Z5VEGBBJ');
+      try {
+        var wolfUd = JSON.parse(sessionStorage.getItem('wolf_ud') || 'null');
+        if (wolfUd) { gtag('set', 'user_data', wolfUd); sessionStorage.removeItem('wolf_ud'); }
+      } catch (e) {}
     </script>
     <!-- Event snippet for Enviar form lead - kitchen conversion page -->
     <script>
-      gtag('event', 'conversion', {
-          'send_to': 'AW-16525015107/_FGsCODO8OkbEMPw3sc9',
-          'value': 1.0,
-          'currency': 'USD'
-      });
+      (function () {
+        var sent = false;
+        try { sent = sessionStorage.getItem('wolf_conv_sent') === '1'; sessionStorage.removeItem('wolf_conv_sent'); } catch (e) {}
+        var fromGoogle = (new URLSearchParams(window.location.search).get('platform') || '').toUpperCase() === 'GOOGLE';
+        if (!sent && fromGoogle) {
+          gtag('event', 'conversion', {
+              'send_to': 'AW-16525015107/_FGsCODO8OkbEMPw3sc9',
+              'value': 1.0,
+              'currency': 'USD'
+          });
+        }
+      })();
     </script>
 
     <!-- Meta Pixel Code -->
