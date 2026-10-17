@@ -2,6 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+/* mg-clid v1 (MediaGrowth): guarda gclid/gbraid/wbraid/fbclid + _fbc/_fbp e anexa no envio do lead pro n8n */
+(function () {
+  var KEY = 'mg_clid', TTL = 90 * 864e5, IDS = ['gclid', 'gbraid', 'wbraid', 'fbclid'];
+  function load() {
+    try {
+      var o = JSON.parse(localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || '{}');
+      if (o && o._t && Date.now() - o._t > TTL) return {};
+      return o || {};
+    } catch (e) { return {}; }
+  }
+  function save(o) {
+    o._t = Date.now();
+    var s = JSON.stringify(o);
+    try { localStorage.setItem(KEY, s); } catch (e) {}
+    try { sessionStorage.setItem(KEY, s); } catch (e) {}
+  }
+  function cookie(n) {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  try {
+    var q = new URLSearchParams(location.search), cur = load(), novo = false;
+    IDS.forEach(function (k) { var v = q.get(k); if (v) { if (!novo) { cur = {}; novo = true; } cur[k] = v; } });
+    if (novo) {
+      if (cur.fbclid) cur.fbc = 'fb.1.' + Date.now() + '.' + cur.fbclid;
+      save(cur);
+    }
+  } catch (e) {}
+  window.mgClid = function () {
+    var o = load(), r = {};
+    IDS.concat(['fbc']).forEach(function (k) { if (o[k]) r[k] = o[k]; });
+    var fbc = cookie('_fbc'), fbp = cookie('_fbp');
+    if (fbc) r.fbc = fbc;
+    if (fbp) r.fbp = fbp;
+    if (!r.fbclid && r.fbc) { var p = r.fbc.split('.'); if (p.length >= 4) r.fbclid = p.slice(3).join('.'); }
+    return r;
+  };
+  function isLead(u) { return /easypanel\.host\/webhook\//.test(String(u || '')); }
+  function enrich(body) {
+    if (typeof body !== 'string') return body;
+    try {
+      var d = JSON.parse(body);
+      if (!d || typeof d !== 'object' || Array.isArray(d)) return body;
+      var c = window.mgClid();
+      for (var k in c) if (!d[k]) d[k] = c[k];
+      return JSON.stringify(d);
+    } catch (e) { return body; }
+  }
+  if (window.fetch) {
+    var f0 = window.fetch;
+    window.fetch = function (input, init) {
+      try {
+        var u = typeof input === 'string' ? input : (input && input.url);
+        if (isLead(u) && init && init.body) init = Object.assign({}, init, { body: enrich(init.body) });
+      } catch (e) {}
+      return f0.call(this, input, init);
+    };
+  }
+  if (navigator.sendBeacon) {
+    var b0 = navigator.sendBeacon.bind(navigator);
+    navigator.sendBeacon = function (u, data) {
+      try { if (isLead(u) && typeof data === 'string') data = enrich(data); } catch (e) {}
+      return b0(u, data);
+    };
+  }
+})();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Campaign Hub | Wolf Carpenters</title>
