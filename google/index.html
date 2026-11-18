@@ -517,7 +517,7 @@
                         <input type="hidden" name="plataforma" value="GOOGLE">
                         <input type="hidden" name="project_type" value="Kitchen Remodeling">
                         <div class="wolf-hp-field" aria-hidden="true">
-                            <label>Company Website <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+                            <label>Leave this field empty <input type="text" name="hp_field_k2" tabindex="-1" autocomplete="one-time-code" value=""></label>
                         </div>
 
                         <fieldset class="step active" data-step="1">
@@ -944,18 +944,20 @@
             form.addEventListener("submit", async function(event) {
                 event.preventDefault();
                 markStart();
-                if (!validate(TOTAL)) return;
-                for (var s = 1; s < TOTAL; s++) if (!validate(s)) { go(s, true); return; }
+                var blocked = function(reason) { console.warn("Form not sent:", reason); track("kitchen_submit_blocked", { reason: reason }); };
+                if (!validate(TOTAL)) { blocked("invalid_step_5"); return; }
+                for (var s = 1; s < TOTAL; s++) if (!validate(s)) { blocked("invalid_step_" + s); go(s, true); return; }
                 var elapsed = Date.now() - Number(form.dataset.loadedAt || Date.now());
-                var hp = form.querySelector('[name="company_website"]');
-                if (hp && hp.value.trim()) return;
-                if (elapsed < 4000) { showError(TOTAL, "Please take a moment to complete the form."); return; }
+                var hp = form.querySelector('[name="hp_field_k2"]');
+                var hpValue = hp ? hp.value.trim() : "";
+                if (hpValue) track("kitchen_submit_blocked", { reason: "honeypot_filled_sent_anyway" });
+                if (elapsed < 4000) { blocked("too_fast"); showError(TOTAL, "Please take a moment to complete the form."); return; }
 
                 var token = "", humanMethod = "recaptcha_honeypot_time";
                 try {
                     token = getRecaptchaToken();
                     if (token === "manual-checkbox-fallback") humanMethod = "manual_checkbox_fallback";
-                } catch (err) { showError(TOTAL, "Please complete the human verification before submitting."); return; }
+                } catch (err) { blocked("recaptcha_missing"); showError(TOTAL, "Please check the box \"I'm not a robot\" before submitting."); return; }
 
                 var original = btnSubmit.textContent;
                 btnSubmit.disabled = true;
@@ -980,7 +982,7 @@
                     human_validation_method: humanMethod,
                     manual_human_check: humanMethod === "manual_checkbox_fallback",
                     form_elapsed_ms: elapsed,
-                    honeypot: ""
+                    honeypot: hpValue
                 };
                 var attr = window.wolfAttribution ? window.wolfAttribution() : {};
                 ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(function(k) { payload[k] = attr[k] || ""; });
@@ -1007,6 +1009,7 @@
                     window.setTimeout(goThanks, 1500);
                 } catch (err) {
                     console.error("Webhook error:", err);
+                    blocked("webhook_error_" + String(err && err.message || err).slice(0, 60));
                     btnSubmit.disabled = false;
                     btnSubmit.textContent = original;
                     showError(TOTAL, "Something went wrong. Please try again or call (781) 336-4594.");
