@@ -870,7 +870,7 @@
             }
 
             function val(n) { var el = form.querySelector('[name="' + n + '"]:checked') || form.querySelector('[name="' + n + '"]:not([type=radio])'); return el ? String(el.value || "").trim() : ""; }
-            function phoneOk(v) { var d = v.replace(/\D/g, ""); return d.length === 10 || (d.length === 11 && d.charAt(0) === "1"); }
+            function phoneOk(v) { var d = v.replace(/\D/g, ""); if (v.trim().charAt(0) === "+") return d.length >= 10 && d.length <= 15; return d.length === 10 || (d.length === 11 && d.charAt(0) === "1"); }
             function emailOk(v) { return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v); }
 
             function showError(step, msg) {
