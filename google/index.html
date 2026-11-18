@@ -129,20 +129,23 @@
         gtag('config', 'G-F1Z5VEGBBJ', { page_title: document.title, page_location: window.location.href, send_page_view: true });
     </script>
     <script type="text/javascript">
+        window.clarity = window.clarity || function(){(window.clarity.q=window.clarity.q||[]).push(arguments)};
+        window.addEventListener('load', function() { setTimeout(function() {
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "w1bhsrq9sb");
+        }, 1500); });
     </script>
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
+        n.queue=[];f.addEventListener('load',function(){setTimeout(function(){t=b.createElement(e);t.async=!0;
         t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        s.parentNode.insertBefore(t,s)},1200)})}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '4126955510867529');
         fbq('track', 'PageView');
@@ -151,11 +154,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="preload" href="../k2/logo-wolf-original.webp" as="image">
     <link rel="preload" href="../k2/hero-kitchen-900.webp" as="image" media="(max-width: 767px)">
     <link rel="preload" href="../k2/hero-kitchen.webp" as="image" media="(min-width: 768px)">
-    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
 
     <style>
         :root {
@@ -834,7 +837,19 @@
                     } catch (err) { box.classList.add("use-manual"); }
                 }
             }
+            var rcLoading = false, rcStarted = false;
+            function loadRecaptcha() {
+                if (rcLoading || (window.grecaptcha && window.grecaptcha.render)) return;
+                rcLoading = true;
+                var sc = document.createElement("script");
+                sc.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+                sc.async = true; sc.defer = true;
+                document.head.appendChild(sc);
+            }
             function initRecaptcha() {
+                if (rcStarted) return;
+                rcStarted = true;
+                loadRecaptcha();
                 var tries = 0;
                 var t = window.setInterval(function() {
                     tries += 1;
@@ -888,7 +903,7 @@
                 var isChoice = step <= 2;
                 btnNext.hidden = (isChoice && !val(step === 1 ? "project_goal" : "start_timeline")) || step === TOTAL;
                 btnSubmit.hidden = step !== TOTAL;
-                if (step === TOTAL) renderRecaptcha();
+                if (step === TOTAL) { initRecaptcha(); renderRecaptcha(); }
                 if (!reached[step]) { reached[step] = true; track("kitchen_form_step", { step: step }); }
                 if (focus) {
                     var inp = steps[step - 1].querySelector("input:not([type=hidden]):not([type=checkbox])");
@@ -898,6 +913,7 @@
             function markStart() {
                 if (started) return;
                 started = true;
+                loadRecaptcha();
                 track("kitchen_form_start", {});
             }
             function next() {
@@ -1031,7 +1047,6 @@
             range.addEventListener("input", function() { setBa(range.value); if (!baMoved) { baMoved = true; track("kitchen_before_after_drag", {}); } });
             setBa(50);
 
-            initRecaptcha();
             track("page_view_kitchen_google", {});
         })();
     </script>
